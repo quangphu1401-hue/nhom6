@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/reponsive.css">
+    <link rel="stylesheet" href="/assets/fonts/themify-icons/themify-icons.css">
+    <link rel="icon" href="./assets/img/map/favicon1.jpg" type="image/x-icon" />
+
+    <title>AgroBI - Hệ Thống Kinh Doanh Thông Minh Nông Nghiệp</title>
+</head>
+
+<body>
+    <div id="main">
+        <div id="header">
+            <!--Begin nav-->
+            <ul id="nav">
+                <li><a href="#">Trang Chủ</a></li>
+                <li><a href="#band">Giới Thiệu</a></li>
+                <li><a href="#tour">Kế Hoạch Mùa Vụ</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
+                <li>
+                    <a href="#">
+                        Dịch Vụ
+                        <i class=" nav-arrow-down ti-angle-down"></i>
+                    </a>
+                    <ul class="subnav">
+                        <li><a href="#care-guide">Hướng dẫn chăm sóc</a></li>
+                        <li><a href="#dashboard">Trung tâm điều hành</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!--End nav-->
+
+            <!-- Begin: search button -->
+            <div class="search-btn">
+                <i class="search-icon ti-search"></i>
+            </div>
+
+            <!-- <div id="mobile-menu" class="mobile-menu-btn">
+            <i class="menu-icon ti-menu"></i>
+        </div> -->
+
+            <!-- End: search button -->
+        </div>
+
+        <div id="slider">
+            <div class="text-conten">
+                <h2 class="text-heading">AgroBI Platform</h2>
+                <div class="text-description">Giải pháp AI & Tự động hóa cho quản lý nông nghiệp hiệu quả.</div>
+            </div>
+        </div>
+
+        <div id="content">
+            <!-- About Section -->
+            <div id="band" class="content-section">
+                <h2 class="section-heading">VỀ AGRABI</h2>
+                <p class="section-sub-heading">Công nghệ thông minh cho nông nghiệp</p>
+                <p class="about-text">AgroBI là nền tảng hệ thống kinh doanh thông minh được thiết kế đặc biệt cho lĩnh vực nông nghiệp. Chúng tôi tích hợp công nghệ AI (Trí tuệ nhân tạo), BI (Business Intelligence) và Tự động hóa dữ liệu để hỗ trợ nông dân và doanh nghiệp
+                    nông nghiệp trong quản lý mùa vụ, dự báo sản lượng, tối ưu hóa chi phí và ra quyết định kinh doanh. Hệ thống của chúng tôi cung cấp phân tích chuyên sâu về điều kiện đất, thời tiết, sâu bệnh và thị trường để giúp bạn tăng năng suất
+                    và lợi nhuận. Với giao diện thân thiện và các công cụ mạnh mẽ, AgroBI giúp hiện đại hóa hoạt động nông nghiệp của bạn, từ lập kế hoạch đến thu hoạch.</p>
+
+                <div class="row members-list">
+                    <div class="col col-third text-center">
+                        <p class="member-name">Quản lý Mùa Vụ</p>
+                        <img src="./assets/img/agrabi/muavu.jpg" alt="Quản lý" class="member-img">
+                    </div>
+                    <div class="col col-third text-center">
+                        <p class="member-name">Phân Tích Dữ Liệu</p>
+                        <img src="./assets/img/agrabi/phantich.png" alt="Dữ liệu" class="member-img">
+                    </div>
+                    <div class="col col-third text-center">
+                        <p class="member-name">Dự Báo & Quyết Định</p>
+                        <img src="./assets/img/agrabi/dubao.jpg" alt="Dự báo" class="member-img">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tour Section -->
+            <div id="tour" class="tour-section">
+                <div class="content-section">
+                    <h2 class="section-heading">KẾ HOẠCH MÙA VỤ</h2>
+                    <p class="section-sub-heading">Lên kế hoạch sản xuất với AI và dữ liệu chính xác</p>
+
+                    <!-- Tickets -->
+                    <ul class="tickets-list">
+                        <li>Quý I - Mùa Xuân <span class="quantity">Sẵn sàng</span></li>
+                        <li>Quý II - Mùa Hạ <span class="quantity">Sẵn sàng</span></li>
+                        <li>Quý III - Mùa Thu <span class="quantity">Đang thực hiện</span></li>
+                        <li>Quý IV - Mùa Đông <span class="quantity">Chưa thực hiện</span></li>
+                    </ul>
+
+                    <!-- Place -->
+                    <div class="row places-list">
+                        <div class="col col-third">
+                            <img src="./assets/img/place/luagao.jpg" alt="Lúa Gạo" class="place-img">
+                            <div class="place-body">
+                                <h3 class="playheading">Lúa Gạo</h3>
+                                <p class="place-time">Mùa vụ: Tháng 5-9</p>
+                                <p class="place-desc">Giám sát thực thời về độ ẩm đất, nhiệt độ và sâu bệnh. Tối ưu hóa lịch tưới tiêu và bón phân với AI.</p>
+                                <button class="btn s-full-width js-buy-ticket">Xem Chi Tiết</button >
+                        </div>
+                        </div>
+
+                        <div class="col col-third">
+                            <img src="./assets/img/place/raucuqua.jpg" alt="Rau Củ" class="place-img">
+                        <div class="place-body">
+                            <h3 class="playheading">Rau Củ Quả</h3>
+                            <p class="place-time">Mùa vụ: Quanh năm</p>
+                            <p class="place-desc">Dự báo nhu cầu thị trường, quản lý vòng đời cây trồng, phát hiện bệnh tật sớm, tăng năng suất và chất lượng.</p>
+                            <button class="btn s-full-width js-buy-ticket">Xem Chi Tiết</button>
+                            </div>
+                        </div>
+
+                        <div class="col col-third">
+                            <img src="./assets/img/place/caycongnghiep.jpg" alt="Cây Công Nghiệp" class="place-img">
+                            <div class="place-body">
+                                <h3 class="playheading">Cây Công Nghiệp</h3>
+                                <p class="place-time">Mùa vụ: Tháng 10-2</p>
+                                <p class="place-desc">Quản lý toàn bộ quy trình từ gieo hạt đến thu hoạch với hệ thống tự động hóa, giám sát và phân tích dữ liệu thời gian thực.</p>
+                                <button class="btn s-full-width js-buy-ticket">Xem Chi Tiết</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= HƯỚNG DẪN CHĂM SÓC ================= -->
+            <div id="care-guide" class="content-section">
+
+                <h2 class="section-heading">HƯỚNG DẪN CHĂM SÓC CÂY TRỒNG</h2>
+                <p class="section-sub-heading">Khuyến nghị kỹ thuật theo từng loại cây</p>
+
+                <div class="row guide-grid">
+
+                    <div class="col col-third">
+                        <div class="guide-card">
+                            <h3>🌾 Lúa</h3>
+                            <ul>
+                                <li>Gieo sạ đúng thời vụ, tránh mưa lớn</li>
+                                <li>Tưới nước định kỳ, giữ mực nước 3–5cm</li>
+                                <li>Bón phân NPK 3 giai đoạn</li>
+                                <li>Phòng trừ sâu cuốn lá</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col col-third">
+                        <div class="guide-card">
+                            <h3>🥬 Rau màu</h3>
+                            <ul>
+                                <li>Đất tơi xốp, thoát nước tốt</li>
+                                <li>Tưới sáng sớm hoặc chiều mát</li>
+                                <li>Bón phân hữu cơ, hạn chế hóa học</li>
+                                <li>Phòng sâu ăn lá, nấm bệnh</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col col-third">
+                        <div class="guide-card">
+                            <h3>🌳 Cây công nghiệp</h3>
+                            <ul>
+                                <li>Chọn giống phù hợp khí hậu</li>
+                                <li>Tỉa cành, tạo tán định kỳ</li>
+                                <li>Bón phân theo chu kỳ sinh trưởng</li>
+                                <li>Kiểm soát sâu bệnh tổng hợp</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ================= NHẬN DIỆN CÔN TRÙNG TỪ ẢNH ================= -->
+            <div id="pest-image-identification" class="content-section">
+                <h2 class="section-heading">NHẬN DIỆN CÔN TRÙNG TỪ ẢNH</h2>
+                <p class="section-sub-heading">Upload ảnh côn trùng để AI phân tích có lợi hay có hại</p>
+
+                <div class="row">
+                    <div class="col col-half">
+                        <div class="upload-card">
+                            <h3>📸 Upload Ảnh</h3>
+                            <div class="upload-area" id="uploadArea">
+                                <input type="file" id="pestImageInput" accept="image/*" style="display: none;">
+                                <div class="upload-placeholder" onclick="document.getElementById('pestImageInput').click()">
+                                    <i class="ti-upload" style="font-size: 48px; color: #4CAF50;"></i>
+                                    <p>Click để chọn ảnh hoặc kéo thả ảnh vào đây</p>
+                                    <p style="font-size: 12px; color: #999;">Hỗ trợ: JPG, PNG, WebP</p>
+                                </div>
+                                <img id="previewImage" style="display: none; max-width: 100%; max-height: 300px; margin-top: 10px; border-radius: 8px;">
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <input type="text" id="pestLocation" placeholder="Vị trí (tùy chọn)" class="form-control" style="margin-bottom: 10px;">
+                                <button class="btn" onclick="analyzePestImage()" id="analyzeBtn" disabled>🔍 Phân Tích Ảnh</button>
+                                <button class="btn" onclick="resetImageUpload()" style="background: #999; margin-left: 10px;">🔄 Reset</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col col-half">
+                        <div class="result-card" id="pestResultCard" style="display: none;">
+                            <h3>📊 Kết Quả Phân Tích</h3>
+                            <div id="pestResultContent">
+                                <!-- Kết quả sẽ hiển thị ở đây -->
+                            </div>
+                        </div>
+                        <div class="result-card" id="pestLoadingCard" style="display: none;">
+                            <h3>⏳ Đang phân tích...</h3>
+                            <p>AI đang xử lý ảnh của bạn, vui lòng đợi...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+
+                <div id="dashboard" class="inner">
+
+                    <h2 class="section-heading">TRUNG TÂM ĐIỀU HÀNH NÔNG NGHIỆP</h2>
+                    <p class="section-sub-heading">Giám sát mùa vụ • Dự báo thời tiết • Phân tích năng suất</p>
+
+                    <div class="row dashboard-grid">
+
+                        <div class="col col-third">
+                            <div class="dashboard-card" id="weatherCard">
+                                <h3>🌦️ Thời Tiết</h3>
+                                <p id="weatherLocation">Đang tải...</p>
+                                <p id="weatherTemp">Nhiệt độ: --</p>
+                                <p id="weatherHumidity">Độ ẩm: --</p>
+                                <p id="weatherPrecip">Lượng mưa: --</p>
+                                <p id="weatherWarning">Cảnh báo: --</p>
+                                <button class="btn" onclick="loadWeather()">Cập nhật</button>
+                            </div>
+                        </div>
+
+                        <div class="col col-third">
+                            <div class="dashboard-card" id="cropCard">
+                                <h3>🌱 Mùa Vụ</h3>
+                                <p id="cropName">Đang tải...</p>
+                                <p id="cropStage">Giai đoạn: --</p>
+                                <p id="cropArea">Diện tích: --</p>
+                                <p id="cropHarvest">Thu hoạch dự kiến: --</p>
+                                <button class="btn" onclick="loadCrops()">Cập nhật</button>
+                            </div>
+                        </div>
+
+                        <div class="col col-third">
+                            <div class="dashboard-card">
+                                <h3>🧑‍🌾 Công việc hôm nay</h3>
+                                <ul class="task-list">
+                                    <p>Kiểm tra sâu bệnh</p>
+                                    <p>Tưới tiêu khu A</p>
+                                    <p>Bón phân lúa</p>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="dashboard-analytics">
+                        <h3>Thống kê & Phân tích</h3>
+                        <p>Năng suất: 6.5 tấn/ha</p>
+                        <p>Chi phí: 32 triệu VND</p>
+                        <p>Lợi nhuận: 45 triệu VND</p>
+                    </div>
+
+                    <div class="dashboard-map-section mt-16">
+                        <h3>BẢN ĐỒ DỰ BÁO THỜI TIẾT THEO KHU VỰC</h3>
+                        <div class="row">
+                            <div class="col col-half">
+                                <div class="map-box">
+                                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=105.7,20.9,105.9,21.1&layer=mapnik" loading="lazy">
+                </iframe>
+                                </div>
+                            </div>
+
+                            <div class="col col-half">
+                                <div class="forecast-box">
+                                    <h4>🌦️ Dự báo Hà Nội (7 ngày)</h4>
+                                    <ul class="forecast-list" id="forecastList">
+                                        <li>Đang tải dự báo...</li>
+                                    </ul>
+                                    <button class="btn" onclick="loadForecast()">Cập nhật dự báo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+
+            <!--Begin Contact Section -->
+            <div id="contact" class="content-section">
+                <h2 class="section-heading">LIÊN HỆ</h2>
+                <p class="section-sub-heading">Hãy liên hệ với chúng tôi để tìm hiểu thêm!</p>
+
+                <div class="row contact-content">
+                    <div class="col col-half contact-info">
+                        <p><i class="ti-location-pin"></i>Hà Nội, Việt Nam</p>
+                        <p><i class="ti-mobile"></i>Điện thoại: 0866816201</p>
+                        <p><i class="ti-email"></i>Email: NguyenNgocHoan@gmail.com</p>
+                    </div>
+                    <form action="">
+                        <div class="col col-half contact-form">
+                            <div class="row">
+                                <div class="col col-half">
+                                    <input type="text" name="" required placeholder="Tên của bạn" id="" class="form-control">
+                                </div>
+                                <div class="col col-half">
+                                    <input type="email" name="" required placeholder="Email" id="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mt-8">
+                                <div class="col col-full">
+                                    <input type="text" name="" required placeholder="Lời nhắn" id="" class="form-control">
+                                </div>
+                            </div>
+                            <input class="btn pull-right mt-16" type="submit" value="GỬI">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- End Contact -->
+            <div class="map-section">
+                <img src="./assets/img/map/map1.jpg" alt="Map">
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="socials-list">
+            <a href="#"><i class="ti-facebook"></i></a>
+            <a href="#"><i class="ti-instagram"></i></a>
+            <a href="#"><i class="ti-youtube"></i></a>
+            <a href="#"><i class="ti-pinterest"></i></a>
+            <a href="#"><i class="ti-twitter"></i></a>
+            <a href="#"><i class="ti-linkedin"></i></a>
+        </div>
+        <p class="copyright">Copyright &copy; 2025 AgroBI - Hệ thống Kinh Doanh Thông Minh Nông Nghiệp</p>
+    </div>
+    </div>
+
+    <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+            <div class="modal-close js-modal-close">
+                <div class="ti-close"></div>
+            </div>
+
+            <header class="modal-header">
+                <i class="modal-heading-icon ti-bag"></i> Thông Tin Chi Tiết
+            </header>
+
+            <div class="modal-body">
+                <label for="ticket-quantity" class="modal-label">
+                <i class="ti-shopping-cart"></i>
+                Diện tích canh tác (ha)
+            </label>
+                <input id="ticket-quantity" type="text" class="modal-input" required placeholder="Nhập diện tích...">
+                <label for="ticket-email" class="modal-label">
+                <i class="ti-user"></i>
+                Email liên hệ
+            </label>
+                <input id="ticket-email" type="email" class="modal-input" placeholder="Nhập email...">
+
+                <button class="buy-tickets" onclick="submitCropInfo()">Gửi Thông Tin
+                <i class="ti-check"></i>
+            </button>
+            </div>
+
+            <footer class="modal-footer">
+                <p class="modal-help">Cần <a href="#">hỗ trợ?</a>
+                </p>
+            </footer>
+
+        </div>
+    </div>
+    </div>
+
+    <!-- API Integration -->
+    <script src="./assets/js/api.js"></script>
+
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalClose = document.querySelector('.js-modal-close');
+        const modalContainer = document.querySelector('.js-modal-container');
+
+        //Hàm hiển thị modal thông tin chi tiết
+        function showBuyTickets() {
+            modal.classList.add('open');
+        }
+
+        //hàm ẩn modal thông tin chi tiết (ấn X để đóng)
+        function hideBuyTickets() {
+            modal.classList.remove('open');
+        }
+
+        //Lặp qua từng thẻ button và nghe sự kiện click
+        for (const buyBtn of buyBtns) {
+            buyBtn.addEventListener('click', showBuyTickets);
+        }
+
+        //Nghe sự kiện click vào button đóng
+        modalClose.addEventListener('click', hideBuyTickets);
+
+        //Nghe sự kiện click vào nền modal để đóng modal
+        modal.addEventListener('click', hideBuyTickets);
+
+        modalContainer.addEventListener('click', function(event) {
+            event.stopPropagation();
+        })
+    </script>
+
+    <script>
+        var header = document.getElementById('header');
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        //Đóng/mở menu mobile
+        mobileMenu.onclick = function() {
+            // var isOpen = header.clientHeight ===46;
+            // if(isClosed){
+            //     header.style.height = 'auto';
+            // } else{
+            //     header.style.height = null;
+            // }
+        }
+
+        //tự động đóng khi chọn menu
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+    </script>
+
+    <!-- ================= PLANT AI CHAT ================= -->
+    <div id="plant-ai-btn">🤖</div>
+
+    <div id="plant-ai-chat">
+        <div class="plant-header">Plant AI Assistant 🌱</div>
+        <div class="plant-body" id="plantMessages">
+            <div class="plant-msg ai">Xin chào! Tôi có thể giúp gì về cây trồng, sâu bệnh hoặc thời tiết?</div>
+        </div>
+        <div class="plant-footer">
+            <input id="plantInput" type="text" placeholder="Nhập câu hỏi...">
+            <button onclick="sendPlantMessage()">Gửi</button>
+        </div>
+    </div>
+
+    <script>
+        const aiBtn = document.getElementById("plant-ai-btn");
+        const aiChat = document.getElementById("plant-ai-chat");
+
+        aiBtn.onclick = () => {
+            aiChat.style.display = aiChat.style.display === "flex" ? "none" : "flex";
+        };
+    </script>
+
+    <script>
+        // ==================== LOAD DATA FUNCTIONS ====================
+        // Đảm bảo các hàm ở global scope để có thể gọi từ onclick
+
+        // Load thời tiết hiện tại (Hà Nội: 21.0285, 105.8542)
+        async function loadWeather() {
+            const lat = 21.0285;
+            const lon = 105.8542;
+
+            try {
+                const weather = await WeatherAPI.getCurrent(lat, lon);
+
+                document.getElementById("weatherLocation").textContent = `Khu vực: ${weather.location || 'Hà Nội'}`;
+                document.getElementById("weatherTemp").textContent = `Nhiệt độ: ${weather.temperature?.toFixed(1) || '--'}°C`;
+                document.getElementById("weatherHumidity").textContent = `Độ ẩm: ${weather.humidity || '--'}%`;
+                document.getElementById("weatherPrecip").textContent = `Lượng mưa: ${weather.precipitation?.toFixed(1) || '0'}mm`;
+
+                // Cảnh báo
+                let warning = "Không có";
+                if (weather.temperature > 35 || weather.temperature < 10) {
+                    warning = "Nhiệt độ bất thường";
+                } else if (weather.precipitation > 50) {
+                    warning = "Mưa lớn";
+                } else if (weather.humidity < 40) {
+                    warning = "Độ ẩm thấp";
+                }
+                document.getElementById("weatherWarning").textContent = `Cảnh báo: ${warning}`;
+            } catch (error) {
+                console.error("Error loading weather:", error);
+                document.getElementById("weatherLocation").textContent = "Lỗi: Backend chưa chạy hoặc API key chưa cấu hình";
+            }
+        }
+
+        // Load danh sách mùa vụ
+        async function loadCrops() {
+            try {
+                const crops = await CropsAPI.getAll();
+
+                if (crops && crops.length > 0) {
+                    const crop = crops[0]; // Lấy mùa vụ đầu tiên
+                    const stageNames = {
+                        'seedling': 'Cây con',
+                        'vegetative': 'Sinh trưởng',
+                        'flowering': 'Ra hoa',
+                        'fruiting': 'Đậu quả',
+                        'mature': 'Chín',
+                        'harvest': 'Thu hoạch'
+                    };
+
+                    document.getElementById("cropName").textContent = `Cây trồng: ${crop.name || '--'}`;
+                    document.getElementById("cropStage").textContent = `Giai đoạn: ${stageNames[crop.current_growth_stage] || crop.current_growth_stage || '--'}`;
+                    document.getElementById("cropArea").textContent = `Diện tích: ${crop.area_hectares || '--'} ha`;
+
+                    if (crop.expected_harvest_date) {
+                        const harvestDate = new Date(crop.expected_harvest_date);
+                        document.getElementById("cropHarvest").textContent = `Thu hoạch dự kiến: ${harvestDate.toLocaleDateString('vi-VN')}`;
+                    } else {
+                        document.getElementById("cropHarvest").textContent = "Thu hoạch dự kiến: --";
+                    }
+                } else {
+                    document.getElementById("cropName").textContent = "Chưa có mùa vụ nào. Tạo mùa vụ mới qua API.";
+                }
+            } catch (error) {
+                console.error("Error loading crops:", error);
+                document.getElementById("cropName").textContent = "Lỗi: Backend chưa chạy";
+            }
+        }
+
+        // Load dự báo thời tiết
+        async function loadForecast() {
+            const lat = 21.0285;
+            const lon = 105.8542;
+
+            try {
+                const forecastData = await WeatherAPI.getForecast(lat, lon, 7);
+                const forecastList = document.getElementById("forecastList");
+                forecastList.innerHTML = "";
+
+                if (forecastData.forecast && forecastData.forecast.length > 0) {
+                    // Nhóm theo ngày
+                    const dailyForecast = {};
+                    forecastData.forecast.forEach(item => {
+                        const date = new Date(item.forecast_date);
+                        const dateKey = date.toLocaleDateString('vi-VN');
+                        if (!dailyForecast[dateKey]) {
+                            dailyForecast[dateKey] = item;
+                        }
+                    });
+
+                    // Hiển thị 7 ngày
+                    Object.entries(dailyForecast).slice(0, 7).forEach(([date, item]) => {
+                        const li = document.createElement("li");
+                        li.textContent = `${date}: ${item.temperature?.toFixed(1) || '--'}°C | ${item.weather_description || '--'}`;
+                        forecastList.appendChild(li);
+                    });
+                } else {
+                    forecastList.innerHTML = "<li>Không có dữ liệu dự báo</li>";
+                }
+            } catch (error) {
+                console.error("Error loading forecast:", error);
+                document.getElementById("forecastList").innerHTML = "<li>Lỗi: Backend chưa chạy hoặc API key chưa cấu hình</li>";
+            }
+        }
+
+        // Hàm xử lý khi submit thông tin mùa vụ
+        async function submitCropInfo() {
+            const area = document.getElementById("ticket-quantity").value;
+            const email = document.getElementById("ticket-email").value;
+
+            if (!area || parseFloat(area) <= 0) {
+                alert("Vui lòng nhập diện tích canh tác hợp lệ!");
+                return;
+            }
+
+            // Tạo mùa vụ mới
+            try {
+                const cropData = {
+                    name: `Mùa vụ ${new Date().getFullYear()}`,
+                    crop_type: "coffee_robusta",
+                    planting_date: new Date().toISOString().split('T')[0],
+                    area_hectares: parseFloat(area),
+                    location: "Hà Nội",
+                    latitude: 21.0285,
+                    longitude: 105.8542,
+                    notes: `Email liên hệ: ${email || 'Không có'}`
+                };
+
+                const response = await CropsAPI.create(cropData);
+
+                // Đóng modal
+                hideBuyTickets();
+
+                // Hiển thị thông báo thành công
+                alert(`✅ Đã tạo mùa vụ thành công!\n\nTên: ${response.name}\nDiện tích: ${response.area_hectares} ha\nGiai đoạn: ${response.current_growth_stage}\nTuổi cây: ${response.age_days} ngày`);
+
+                // Reload danh sách mùa vụ
+                loadCrops();
+
+                // Reset form
+                document.getElementById("ticket-quantity").value = "";
+                document.getElementById("ticket-email").value = "";
+            } catch (error) {
+                console.error("Error creating crop:", error);
+                alert(`❌ Lỗi khi tạo mùa vụ: ${error.message}\n\nVui lòng kiểm tra:\n- Backend đang chạy (http://localhost:8000)\n- Kết nối internet`);
+            }
+        }
+
+        // Tự động load khi trang được tải
+        window.addEventListener('DOMContentLoaded', () => {
+            loadWeather();
+            loadCrops();
+            loadForecast();
+        });
+
+        async function sendPlantMessage() {
+            const input = document.getElementById("plantInput");
+            const msgBox = document.getElementById("plantMessages");
+
+            if (input.value.trim() === "") return;
+
+            const question = input.value.trim();
+
+            // Hiển thị câu hỏi của user
+            const userMsg = document.createElement("div");
+            userMsg.className = "plant-msg user";
+            userMsg.innerText = question;
+            msgBox.appendChild(userMsg);
+
+            // Hiển thị loading
+            const aiMsg = document.createElement("div");
+            aiMsg.className = "plant-msg ai";
+            aiMsg.innerText = "🌿 Tôi đang xử lý câu hỏi về cây trồng của bạn...";
+            msgBox.appendChild(aiMsg);
+
+            input.value = "";
+            msgBox.scrollTop = msgBox.scrollHeight;
+
+            try {
+                // Gọi AI Assistant API
+                const response = await AIAssistantAPI.ask(question);
+                aiMsg.innerText = response.answer || "Xin lỗi, tôi không thể trả lời câu hỏi này.";
+            } catch (error) {
+                console.error("Error calling AI API:", error);
+                aiMsg.innerText = "❌ Lỗi kết nối API. Vui lòng kiểm tra backend đã chạy chưa (http://localhost:8000)";
+            }
+
+            msgBox.scrollTop = msgBox.scrollHeight;
+        }
+
+        // ==================== IMAGE UPLOAD FUNCTIONS ====================
+
+        function setupImageUpload() {
+            const input = document.getElementById("pestImageInput");
+            const uploadArea = document.getElementById("uploadArea");
+
+            if (!input || !uploadArea) return;
+
+            input.addEventListener("change", function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const preview = document.getElementById("previewImage");
+                        preview.src = e.target.result;
+                        preview.style.display = "block";
+                        document.getElementById("analyzeBtn").disabled = false;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Drag and drop
+            uploadArea.addEventListener("dragover", function(e) {
+                e.preventDefault();
+                uploadArea.style.background = "#f0f0f0";
+            });
+
+            uploadArea.addEventListener("dragleave", function(e) {
+                e.preventDefault();
+                uploadArea.style.background = "";
+            });
+
+            uploadArea.addEventListener("drop", function(e) {
+                e.preventDefault();
+                uploadArea.style.background = "";
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.startsWith("image/")) {
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                    input.files = dataTransfer.files;
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const preview = document.getElementById("previewImage");
+                        preview.src = e.target.result;
+                        preview.style.display = "block";
+                        document.getElementById("analyzeBtn").disabled = false;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        async function analyzePestImage() {
+            const input = document.getElementById("pestImageInput");
+            const location = document.getElementById("pestLocation").value;
+
+            if (!input.files || !input.files[0]) {
+                alert("Vui lòng chọn ảnh trước!");
+                return;
+            }
+
+            const file = input.files[0];
+            const formData = new FormData();
+            formData.append("file", file);
+            if (location) {
+                formData.append("location", location);
+            }
+
+            // Hiển thị loading
+            document.getElementById("pestResultCard").style.display = "none";
+            document.getElementById("pestLoadingCard").style.display = "block";
+            document.getElementById("analyzeBtn").disabled = true;
+
+            try {
+                const response = await fetch("http://localhost:8000/api/pests/identify-image", {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                displayPestResult(result);
+            } catch (error) {
+                console.error("Error analyzing image:", error);
+                document.getElementById("pestResultContent").innerHTML = `
+            <div style="color: red; padding: 15px;">
+                <h4>❌ Lỗi</h4>
+                <p>Không thể phân tích ảnh. Vui lòng kiểm tra:</p>
+                <ul>
+                    <li>Backend đang chạy (http://localhost:8000)</li>
+                    <li>Ảnh có định dạng hợp lệ (JPG, PNG)</li>
+                    <li>Kết nối internet ổn định</li>
+                </ul>
+                <p>Chi tiết: ${error.message}</p>
+            </div>
+        `;
+                document.getElementById("pestResultCard").style.display = "block";
+            } finally {
+                document.getElementById("pestLoadingCard").style.display = "none";
+                document.getElementById("analyzeBtn").disabled = false;
+            }
+        }
+
+        function displayPestResult(result) {
+            const content = document.getElementById("pestResultContent");
+            const isBeneficial = result.is_beneficial;
+            const beneficialBadge = isBeneficial === true ?
+                '<span style="background: #4CAF50; color: white; padding: 5px 10px; border-radius: 5px; font-weight: bold;">✅ CÓ LỢI</span>' :
+                isBeneficial === false ?
+                '<span style="background: #f44336; color: white; padding: 5px 10px; border-radius: 5px; font-weight: bold;">❌ CÓ HẠI</span>' :
+                '<span style="background: #999; color: white; padding: 5px 10px; border-radius: 5px;">❓ CHƯA XÁC ĐỊNH</span>';
+
+            content.innerHTML = `
+        <div style="padding: 15px;">
+            <h4>${result.identified_pest_name || "Chưa xác định"}</h4>
+            <p style="margin: 10px 0;">${beneficialBadge}</p>
+            
+            <div style="margin: 15px 0;">
+                <strong>Độ tin cậy:</strong> ${(result.confidence_score * 100).toFixed(1)}%<br>
+                <strong>Loại:</strong> ${result.pest_type || "unknown"}<br>
+                ${result.severity ? `<strong>Mức độ:</strong> ${result.severity}<br>` : ''}
+            </div>
+            
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                <strong>💡 Khuyến nghị:</strong>
+                <p style="margin-top: 10px;">${result.recommendation || "Không có khuyến nghị"}</p>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById("pestResultCard").style.display = "block";
+}
+
+function resetImageUpload() {
+    document.getElementById("pestImageInput").value = "";
+    document.getElementById("previewImage").style.display = "none";
+    document.getElementById("previewImage").src = "";
+    document.getElementById("pestLocation").value = "";
+    document.getElementById("pestResultCard").style.display = "none";
+    document.getElementById("pestLoadingCard").style.display = "none";
+    document.getElementById("analyzeBtn").disabled = true;
+}
+
+// Gọi setup khi trang load
+window.addEventListener('DOMContentLoaded', () => {
+    setupImageUpload();
+});
+    </script>
+
+
+</body>
+
+</html>

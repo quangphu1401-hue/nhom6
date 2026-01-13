@@ -1,0 +1,72 @@
+/*  Break points: 
+        PC >= 1024px
+        740px <= TABLET < 1024px
+        MOBILE < 740px */
+
+/* PC */
+@media (min-width: 1024px) {
+    .pc{
+        display: block;
+    }
+}
+
+/* TABLET */
+@media (min-width: 740px) and (max-width: 1024px) {
+    .tablet{
+        display: block;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 740px){
+    .mobile{
+        display: block;
+    
+    }
+    #nav >li {
+        display: block;
+    }
+
+    #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 46px;
+    background-color: #000;
+    z-index: 1;
+
+    }
+
+    #header .search-btn{
+        display: none;
+    }
+
+    #header .mobile-menu-btn,
+    #header .search-btn{
+        float: right;
+        padding: 0 21px;
+    }
+
+    #header .mobile-menu-btn:hover .menu-icon,
+    #header .search-btn:hover{
+        background-color: #ccc;
+    }
+
+    #header .mobile-menu-btn:hover {
+       background-color: #ccc;
+    }
+
+    #header .mobile-menu-btn:hover .menu-icon{
+        color: #000;
+    }
+
+    #header .menu-icon,
+    #header .search-icon{
+        color:#fff;
+        font-size: 20px;
+        line-height: 46px;
+    }
+
+}
+        
