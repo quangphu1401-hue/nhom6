@@ -50,9 +50,10 @@ class SHIService:
         # Tính điểm chăm sóc (0-100)
         care_score = SHIService._calculate_care_score(recent_care_logs)
         
-        # SHI = Trung bình có trọng số
-        # Thời tiết: 60%, Chăm sóc: 40%
-        shi_score = (weather_score * 0.6) + (care_score * 0.4)
+        # SHI theo công thức PDF - Giai đoạn 2
+        # SHI = Weather × 0.3 + Care × 0.4 + Growth × 0.3
+        growth_score = SHIService._calculate_growth_score(crop_id, db)
+        shi_score = (weather_score * 0.3) + (care_score * 0.4) + (growth_score * 0.3)
         
         # Xác định trạng thái
         if shi_score >= 80:
@@ -74,10 +75,12 @@ class SHIService:
             "status_vn": status_vn,
             "weather_score": round(weather_score, 2),
             "care_score": round(care_score, 2),
+            "growth_score": round(growth_score, 2),
             "details": {
                 "weather": weather_data or {},
                 "care_activities_count": len(recent_care_logs) if recent_care_logs else 0
-            }
+            },
+            "warnings": SHIService._check_warnings(shi_score, weather_data)
         }
     
     @staticmethod
@@ -141,6 +144,72 @@ class SHIService:
             score += 10
         
         return min(100, score)
+    
+    @staticmethod
+    def _calculate_growth_score(crop_id: int, db: Session) -> float:
+        """Tính điểm giai đoạn sinh trưởng (0-100)"""
+        from app.models.crop_model import Crop
+        
+        crop = db.query(Crop).filter(Crop.id == crop_id).first()
+        if not crop:
+            return 50.0
+        
+        # Quy đổi từ growth_stage sang điểm
+        growth_scores = {
+            'seedling': 30.0,      # Cây con - điểm thấp
+            'vegetative': 60.0,    # Sinh trưởng - điểm trung bình
+            'flowering': 80.0,     # Ra hoa - điểm tốt
+            'fruiting': 90.0,      # Đậu quả - điểm rất tốt
+            'mature': 95.0,        # Chín - điểm xuất sắc
+            'harvest': 100.0       # Thu hoạch - hoàn thành
+        }
+        
+        stage = crop.current_growth_stage.value if crop.current_growth_stage else 'seedling'
+        return growth_scores.get(stage, 50.0)
+    
+    @staticmethod
+    def _check_warnings(shi_score: float, weather_data: Optional[Dict[str, Any]]) -> list:
+        """Rule-based cảnh báo theo PDF - Giai đoạn 2"""
+        warnings = []
+        
+        # SHI < 50: Nguy cơ mùa vụ kém
+        if shi_score < 50:
+            warnings.append({
+                "level": "high",
+                "message": "Nguy cơ mùa vụ kém - SHI thấp",
+                "type": "shi_low"
+            })
+        
+        if weather_data:
+            temp = weather_data.get("temperature") or weather_data.get("temp")
+            rain = weather_data.get("precipitation") or weather_data.get("rain", 0)
+            care_score = weather_data.get("care_score", 100)
+            
+            # Temp > 35°C: Stress nhiệt
+            if temp and temp > 35:
+                warnings.append({
+                    "level": "high",
+                    "message": "Stress nhiệt - Nhiệt độ > 35°C",
+                    "type": "temp_high"
+                })
+            
+            # Rain > 80mm: Nguy cơ rửa trôi phân
+            if rain > 80:
+                warnings.append({
+                    "level": "medium",
+                    "message": "Nguy cơ rửa trôi phân - Mưa > 80mm",
+                    "type": "rain_high"
+                })
+            
+            # Care < 60: Cần tăng chăm sóc
+            if care_score < 60:
+                warnings.append({
+                    "level": "medium",
+                    "message": "Cần tăng chăm sóc - Điểm chăm sóc < 60",
+                    "type": "care_low"
+                })
+        
+        return warnings
 
 shi_service = SHIService()
 

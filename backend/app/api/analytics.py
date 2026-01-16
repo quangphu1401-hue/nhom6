@@ -31,7 +31,8 @@ async def get_shi_score(crop_id: int, db: Session = Depends(get_db)):
     return {
         "crop_id": crop_id,
         "crop_name": crop.name,
-        **shi_result
+        **shi_result,
+        "formula": "SHI = Weather × 0.3 + Care × 0.4 + Growth × 0.3"
     }
 
 @router.get("/crop/{crop_id}/summary")

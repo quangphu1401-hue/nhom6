@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from app.api import crops, weather, care_logs, pests, analytics, ai_assistant
+from app.api import crops, weather, care_logs, pests, analytics, ai_assistant, warnings
 from app.database.database import engine, Base
-from app.models import crop_model, weather_model, care_log_model, pest_model, season_history_model
+from app.models import crop_model, weather_model, care_log_model, pest_model, season_history_model, season_model, shi_daily_model
 import os
 from dotenv import load_dotenv
 
@@ -35,6 +35,7 @@ app.include_router(care_logs.router, prefix="/api/care-logs", tags=["Care Logs"]
 app.include_router(pests.router, prefix="/api/pests", tags=["Pests"])
 app.include_router(analytics.router, prefix="/api/analytics", tags=["Analytics"])
 app.include_router(ai_assistant.router, prefix="/api/ai", tags=["AI Assistant"])
+app.include_router(warnings.router, prefix="/api/warnings", tags=["Warnings"])
 
 @app.get("/")
 async def root():
