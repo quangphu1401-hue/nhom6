@@ -35,33 +35,47 @@ class AIService:
         
         # Knowledge base về sâu bệnh cà phê Robusta
         knowledge_base = """
-        Sâu bệnh phổ biến trên cà phê Robusta:
-        1. Rầy xanh (Green leafhopper) - Empoasca spp.
-        2. Sâu đục thân (Coffee stem borer) - Xylotrechus quadripes
-        3. Bọ xít muỗi (Coffee berry borer) - Hypothenemus hampei
-        4. Bệnh gỉ sắt (Coffee leaf rust) - Hemileia vastatrix
-        5. Bệnh khô cành (Dieback) - Colletotrichum gloeosporioides
-        6. Rệp sáp (Mealybugs) - Planococcus spp.
-        7. Mọt đục quả (Coffee berry borer)
+        Côn trùng/Sâu bệnh CÓ HẠI trên cà phê Robusta:
+        1. Rầy xanh (Green leafhopper) - Empoasca spp. - CÓ HẠI
+        2. Sâu đục thân (Coffee stem borer) - Xylotrechus quadripes - CÓ HẠI
+        3. Bọ xít muỗi (Coffee berry borer) - Hypothenemus hampei - CÓ HẠI
+        4. Rệp sáp (Mealybugs) - Planococcus spp. - CÓ HẠI
+        5. Mọt đục quả (Coffee berry borer) - CÓ HẠI
+        6. Bệnh gỉ sắt (Coffee leaf rust) - Hemileia vastatrix - CÓ HẠI
+        7. Bệnh khô cành (Dieback) - Colletotrichum gloeosporioides - CÓ HẠI
+        
+        Côn trùng CÓ LỢI trên cà phê Robusta:
+        1. Bọ rùa (Ladybugs) - Coccinellidae - CÓ LỢI (ăn rệp, rầy)
+        2. Ong mật - CÓ LỢI (thụ phấn cho hoa cà phê)
+        3. Bọ xít ăn thịt - CÓ LỢI (ăn sâu hại)
+        4. Kiến vàng - CÓ LỢI (bảo vệ cây khỏi sâu hại)
+        5. Nhện săn mồi - CÓ LỢI (ăn côn trùng có hại)
         """
         
         prompt = f"""
         Bạn là chuyên gia nông nghiệp về cây cà phê Robusta. 
-        Dựa trên mô tả sau đây, hãy nhận diện sâu bệnh và đưa ra khuyến nghị.
+        Dựa trên mô tả sau đây, hãy nhận diện côn trùng/sâu bệnh và đưa ra khuyến nghị.
         
-        Kiến thức về sâu bệnh cà phê:
+        Kiến thức về côn trùng/sâu bệnh cà phê:
         {knowledge_base}
         
         Mô tả từ người dùng: {description}
         Loại cây: {crop_type}
         
+        Hãy trả lời các câu hỏi:
+        1. Đây là loại côn trùng/sâu bệnh gì? (Tên khoa học và tên thường gọi)
+        2. Côn trùng này có LỢI hay có HẠI cho cây cà phê?
+        3. Mức độ nghiêm trọng (low/medium/high/none) nếu có hại
+        4. Khuyến nghị xử lý cụ thể
+        
         Hãy trả lời dưới dạng JSON với các trường:
         {{
-            "identified_pest_name": "Tên sâu bệnh",
+            "identified_pest_name": "Tên côn trùng/sâu bệnh (tên khoa học và tên thường gọi)",
             "confidence_score": 0.0-1.0,
-            "pest_type": "insect/disease/weed",
-            "severity": "low/medium/high",
-            "recommendation": "Khuyến nghị xử lý chi tiết"
+            "pest_type": "insect/disease/weed/beneficial",
+            "is_beneficial": true/false/null,
+            "severity": "low/medium/high/none",
+            "recommendation": "Khuyến nghị chi tiết: Nếu có hại thì cách xử lý, nếu có lợi thì cách bảo vệ"
         }}
         """
         

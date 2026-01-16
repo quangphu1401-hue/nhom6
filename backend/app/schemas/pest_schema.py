@@ -17,6 +17,7 @@ class PestIdentificationResponse(PestIdentificationBase):
     pest_type: Optional[str] = None
     severity: Optional[str] = None
     affected_area: Optional[float] = None
+    is_beneficial: Optional[str] = None  # WP3 - Phân loại có lợi/hại
     recommendation: Optional[str] = None
     identified_at: datetime
     

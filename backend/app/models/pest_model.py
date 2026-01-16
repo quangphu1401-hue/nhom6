@@ -14,9 +14,10 @@ class PestIdentification(Base):
     confidence_score = Column(Float)  # Độ tin cậy (0-1)
     
     # Thông tin côn trùng
-    pest_type = Column(String(50))  # Loại: insect, disease, weed
-    severity = Column(String(20))  # Mức độ: low, medium, high
+    pest_type = Column(String(50))  # Loại: insect, disease, weed, beneficial
+    severity = Column(String(20))  # Mức độ: low, medium, high, none
     affected_area = Column(Float)  # Diện tích bị ảnh hưởng (ha)
+    is_beneficial = Column(String(10))  # Có lợi: true, false, null (WP3 - Phân loại)
     
     # Khuyến nghị
     recommendation = Column(Text)  # Khuyến nghị xử lý

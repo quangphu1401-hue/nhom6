@@ -25,6 +25,10 @@ async def identify_pest(pest_data: PestIdentificationCreate, db: Session = Depen
     )
     
     # Lưu kết quả vào database
+    is_beneficial = ai_result.get("is_beneficial")
+    # Convert boolean to string for database
+    is_beneficial_str = str(is_beneficial).lower() if is_beneficial is not None else None
+    
     db_pest = PestIdentification(
         crop_id=pest_data.crop_id,
         description=pest_data.description,
@@ -33,6 +37,7 @@ async def identify_pest(pest_data: PestIdentificationCreate, db: Session = Depen
         confidence_score=ai_result.get("confidence_score"),
         pest_type=ai_result.get("pest_type"),
         severity=ai_result.get("severity"),
+        is_beneficial=is_beneficial_str,  # WP3 - Phân loại có lợi/hại
         recommendation=ai_result.get("recommendation")
     )
     
