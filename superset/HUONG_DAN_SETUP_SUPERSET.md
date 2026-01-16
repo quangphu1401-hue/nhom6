@@ -4,14 +4,33 @@
 
 ### Option 1: Docker (Khuyến nghị)
 
+**Cách 1: Dùng script tự động (Khuyến nghị)**
+
 ```bash
-# Clone Superset repo
-git clone https://github.com/apache/superset.git
+cd superset
+./SETUP_SUPERSET.sh
+```
+
+Script sẽ tự động:
+- Kiểm tra Docker đã cài chưa
+- Tải Superset image
+- Khởi động Superset
+- Tạo admin user (admin/admin)
+
+**Cách 2: Chạy thủ công**
+
+```bash
 cd superset
 
 # Chạy với Docker Compose
 docker-compose up -d
+# hoặc (nếu dùng Docker Compose v2)
+docker compose up -d
 ```
+
+**Lưu ý:** Nếu chưa có Docker, cài đặt Docker Desktop:
+- Tải từ: https://www.docker.com/products/docker-desktop
+- Hoặc: `brew install --cask docker` (nếu có Homebrew)
 
 ### Option 2: Python Virtual Environment
 
