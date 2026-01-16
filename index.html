@@ -260,29 +260,29 @@
 
                     </div>
 
-        <div class="dashboard-analytics">
-            <h3>Thống kê & Phân tích</h3>
-            <div id="shiCard" style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
-                <h4>📊 Chỉ số SHI (Season Health Index)</h4>
-                <p id="shiScore" style="font-size: 24px; font-weight: bold; color: #4CAF50;">--</p>
-                <p id="shiStatus">Đang tính toán...</p>
-                <div id="shiDetails" style="margin-top: 10px; font-size: 12px; color: #666;">
-                    <p>Điểm thời tiết: <span id="weatherScoreDetail">--</span></p>
-                    <p>Điểm chăm sóc: <span id="careScoreDetail">--</span></p>
-                    <p>Điểm giai đoạn: <span id="growthScoreDetail">--</span></p>
-                </div>
-                <button class="btn" onclick="loadSHI()" style="margin-top: 10px;">Tính SHI</button>
-            </div>
-            <div id="warningsCard" style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; display: none;">
-                <h4>⚠️ Cảnh Báo</h4>
-                <div id="warningsList"></div>
-            </div>
-            <div style="margin-top: 15px;">
-                <p>Năng suất: 6.5 tấn/ha</p>
-                <p>Chi phí: 32 triệu VND</p>
-                <p>Lợi nhuận: 45 triệu VND</p>
-            </div>
-        </div>
+                    <div class="dashboard-analytics">
+                        <h3>Thống kê & Phân tích</h3>
+                        <div id="shiCard" style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <h4>📊 Chỉ số SHI (Season Health Index)</h4>
+                            <p id="shiScore" style="font-size: 24px; font-weight: bold; color: #4CAF50;">--</p>
+                            <p id="shiStatus">Đang tính toán...</p>
+                            <div id="shiDetails" style="margin-top: 10px; font-size: 12px; color: #666;">
+                                <p>Điểm thời tiết: <span id="weatherScoreDetail">--</span></p>
+                                <p>Điểm chăm sóc: <span id="careScoreDetail">--</span></p>
+                                <p>Điểm giai đoạn: <span id="growthScoreDetail">--</span></p>
+                            </div>
+                            <button class="btn" onclick="loadSHI()" style="margin-top: 10px;">Tính SHI</button>
+                        </div>
+                        <div id="warningsCard" style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; display: none;">
+                            <h4>⚠️ Cảnh Báo</h4>
+                            <div id="warningsList"></div>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <p>Năng suất: 6.5 tấn/ha</p>
+                            <p>Chi phí: 32 triệu VND</p>
+                            <p>Lợi nhuận: 45 triệu VND</p>
+                        </div>
+                    </div>
 
                     <div class="dashboard-map-section mt-16">
                         <h3>BẢN ĐỒ DỰ BÁO THỜI TIẾT THEO KHU VỰC</h3>
@@ -546,70 +546,70 @@
             }
         }
 
-// Load SHI và cảnh báo
-async function loadSHI() {
-    try {
-        // Lấy crop đầu tiên
-        const crops = await CropsAPI.getAll();
-        if (!crops || crops.length === 0) {
-            document.getElementById("shiScore").textContent = "Chưa có mùa vụ";
-            return;
-        }
-        
-        const cropId = crops[0].id;
-        const shiData = await AnalyticsAPI.getSHI(cropId);
-        
-        // Hiển thị SHI
-        const shiScore = shiData.shi_score || 0;
-        document.getElementById("shiScore").textContent = shiScore.toFixed(1);
-        
-        // Màu sắc theo điểm
-        const shiElement = document.getElementById("shiScore");
-        if (shiScore >= 80) {
-            shiElement.style.color = "#4CAF50"; // Xanh lá
-        } else if (shiScore >= 60) {
-            shiElement.style.color = "#8BC34A"; // Xanh nhạt
-        } else if (shiScore >= 40) {
-            shiElement.style.color = "#FFC107"; // Vàng
-        } else {
-            shiElement.style.color = "#F44336"; // Đỏ
-        }
-        
-        document.getElementById("shiStatus").textContent = `Trạng thái: ${shiData.status_vn || '--'}`;
-        document.getElementById("weatherScoreDetail").textContent = `${shiData.weather_score || 0} điểm`;
-        document.getElementById("careScoreDetail").textContent = `${shiData.care_score || 0} điểm`;
-        document.getElementById("growthScoreDetail").textContent = `${shiData.growth_score || 0} điểm`;
-        
-        // Hiển thị cảnh báo
-        const warnings = shiData.warnings || [];
-        const warningsCard = document.getElementById("warningsCard");
-        const warningsList = document.getElementById("warningsList");
-        
-        if (warnings.length > 0) {
-            warningsCard.style.display = "block";
-            warningsList.innerHTML = "";
-            warnings.forEach(warning => {
-                const warningDiv = document.createElement("div");
-                warningDiv.style.marginBottom = "10px";
-                warningDiv.style.padding = "10px";
-                warningDiv.style.background = warning.level === "high" ? "#f8d7da" : "#fff3cd";
-                warningDiv.style.borderRadius = "5px";
-                warningDiv.innerHTML = `
+        // Load SHI và cảnh báo
+        async function loadSHI() {
+            try {
+                // Lấy crop đầu tiên
+                const crops = await CropsAPI.getAll();
+                if (!crops || crops.length === 0) {
+                    document.getElementById("shiScore").textContent = "Chưa có mùa vụ";
+                    return;
+                }
+
+                const cropId = crops[0].id;
+                const shiData = await AnalyticsAPI.getSHI(cropId);
+
+                // Hiển thị SHI
+                const shiScore = shiData.shi_score || 0;
+                document.getElementById("shiScore").textContent = shiScore.toFixed(1);
+
+                // Màu sắc theo điểm
+                const shiElement = document.getElementById("shiScore");
+                if (shiScore >= 80) {
+                    shiElement.style.color = "#4CAF50"; // Xanh lá
+                } else if (shiScore >= 60) {
+                    shiElement.style.color = "#8BC34A"; // Xanh nhạt
+                } else if (shiScore >= 40) {
+                    shiElement.style.color = "#FFC107"; // Vàng
+                } else {
+                    shiElement.style.color = "#F44336"; // Đỏ
+                }
+
+                document.getElementById("shiStatus").textContent = `Trạng thái: ${shiData.status_vn || '--'}`;
+                document.getElementById("weatherScoreDetail").textContent = `${shiData.weather_score || 0} điểm`;
+                document.getElementById("careScoreDetail").textContent = `${shiData.care_score || 0} điểm`;
+                document.getElementById("growthScoreDetail").textContent = `${shiData.growth_score || 0} điểm`;
+
+                // Hiển thị cảnh báo
+                const warnings = shiData.warnings || [];
+                const warningsCard = document.getElementById("warningsCard");
+                const warningsList = document.getElementById("warningsList");
+
+                if (warnings.length > 0) {
+                    warningsCard.style.display = "block";
+                    warningsList.innerHTML = "";
+                    warnings.forEach(warning => {
+                        const warningDiv = document.createElement("div");
+                        warningDiv.style.marginBottom = "10px";
+                        warningDiv.style.padding = "10px";
+                        warningDiv.style.background = warning.level === "high" ? "#f8d7da" : "#fff3cd";
+                        warningDiv.style.borderRadius = "5px";
+                        warningDiv.innerHTML = `
                     <strong>${warning.level === "high" ? "🔴" : "🟡"} ${warning.message}</strong>
                 `;
-                warningsList.appendChild(warningDiv);
-            });
-        } else {
-            warningsCard.style.display = "none";
+                        warningsList.appendChild(warningDiv);
+                    });
+                } else {
+                    warningsCard.style.display = "none";
+                }
+            } catch (error) {
+                console.error("Error loading SHI:", error);
+                document.getElementById("shiScore").textContent = "Lỗi";
+            }
         }
-    } catch (error) {
-        console.error("Error loading SHI:", error);
-        document.getElementById("shiScore").textContent = "Lỗi";
-    }
-}
 
-// Load dự báo thời tiết
-async function loadForecast() {
+        // Load dự báo thời tiết
+        async function loadForecast() {
             const lat = 21.0285;
             const lon = 105.8542;
 

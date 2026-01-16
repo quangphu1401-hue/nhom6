@@ -1,0 +1,221 @@
+{
+  "name": "Auto Calculate SHI Daily",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 6 * * *"
+            }
+          ]
+        }
+      },
+      "id": "cron-trigger",
+      "name": "Cron Trigger (6AM Daily)",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.BACKEND_URL || 'http://localhost:8000' }}/api/crops/",
+        "options": {}
+      },
+      "id": "get-crops",
+      "name": "Get All Crops",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Lặp qua từng crop và tính SHI\nconst crops = $input.all();\nconst results = [];\n\nfor (const crop of crops) {\n  const cropId = crop.json.id;\n  results.push({\n    json: {\n      crop_id: cropId,\n      action: 'calculate_shi'\n    }\n  });\n}\n\nreturn results;"
+      },
+      "id": "prepare-crop-ids",
+      "name": "Prepare Crop IDs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.BACKEND_URL || 'http://localhost:8000' }}/api/analytics/shi/{{ $json.crop_id }}",
+        "options": {}
+      },
+      "id": "calculate-shi",
+      "name": "Calculate SHI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "check-shi-low",
+              "leftValue": "={{ $json.shi_score }}",
+              "rightValue": 50,
+              "operator": {
+                "type": "number",
+                "operation": "smaller"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-warnings",
+      "name": "Check SHI < 50",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.WEBHOOK_URL || 'https://hooks.slack.com/your-webhook' }}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "=⚠️ Cảnh báo: Mùa vụ {{ $json.crop_name }} có SHI thấp ({{ $json.shi_score }})"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "send-alert",
+      "name": "Send Alert (Optional)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [1250, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.BACKEND_URL || 'http://localhost:8000' }}/api/analytics/shi-daily",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "crop_id",
+              "value": "={{ $json.crop_id }}"
+            },
+            {
+              "name": "shi_score",
+              "value": "={{ $json.shi_score }}"
+            },
+            {
+              "name": "weather_score",
+              "value": "={{ $json.weather_score }}"
+            },
+            {
+              "name": "care_score",
+              "value": "={{ $json.care_score }}"
+            },
+            {
+              "name": "growth_score",
+              "value": "={{ $json.growth_score }}"
+            },
+            {
+              "name": "recorded_date",
+              "value": "={{ $now.toISO().split('T')[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "save-shi-daily",
+      "name": "Save SHI Daily",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [1250, 400]
+    }
+  ],
+  "connections": {
+    "Cron Trigger (6AM Daily)": {
+      "main": [
+        [
+          {
+            "node": "Get All Crops",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get All Crops": {
+      "main": [
+        [
+          {
+            "node": "Prepare Crop IDs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Crop IDs": {
+      "main": [
+        [
+          {
+            "node": "Calculate SHI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculate SHI": {
+      "main": [
+        [
+          {
+            "node": "Check SHI < 50",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check SHI < 50": {
+      "main": [
+        [
+          {
+            "node": "Send Alert (Optional)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Save SHI Daily",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-01T00:00:00.000Z",
+  "versionId": "1"
+}
+

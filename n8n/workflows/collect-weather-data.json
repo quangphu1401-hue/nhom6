@@ -1,0 +1,153 @@
+{
+  "name": "Collect Weather Data Hourly",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 * * * *"
+            }
+          ]
+        }
+      },
+      "id": "hourly-trigger",
+      "name": "Hourly Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.BACKEND_URL || 'http://localhost:8000' }}/api/crops/",
+        "options": {}
+      },
+      "id": "get-crops",
+      "name": "Get Crops with Location",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Lọc crops có tọa độ\nconst crops = $input.all();\nconst results = [];\n\nfor (const crop of crops) {\n  if (crop.json.latitude && crop.json.longitude) {\n    results.push({\n      json: {\n        crop_id: crop.json.id,\n        latitude: crop.json.latitude,\n        longitude: crop.json.longitude\n      }\n    });\n  }\n}\n\nreturn results;"
+      },
+      "id": "filter-crops",
+      "name": "Filter Crops with Coordinates",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.BACKEND_URL || 'http://localhost:8000' }}/api/weather/current?lat={{ $json.latitude }}&lon={{ $json.longitude }}",
+        "options": {}
+      },
+      "id": "get-weather",
+      "name": "Get Current Weather",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.BACKEND_URL || 'http://localhost:8000' }}/api/weather/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "crop_id",
+              "value": "={{ $('Filter Crops with Coordinates').item.json.crop_id }}"
+            },
+            {
+              "name": "temperature",
+              "value": "={{ $json.main.temp }}"
+            },
+            {
+              "name": "humidity",
+              "value": "={{ $json.main.humidity }}"
+            },
+            {
+              "name": "precipitation",
+              "value": "={{ $json.rain ? $json.rain['1h'] : 0 }}"
+            },
+            {
+              "name": "wind_speed",
+              "value": "={{ $json.wind ? $json.wind.speed : 0 }}"
+            },
+            {
+              "name": "is_forecast",
+              "value": "false"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "save-weather",
+      "name": "Save Weather Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [1050, 300]
+    }
+  ],
+  "connections": {
+    "Hourly Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Crops with Location",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Crops with Location": {
+      "main": [
+        [
+          {
+            "node": "Filter Crops with Coordinates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Crops with Coordinates": {
+      "main": [
+        [
+          {
+            "node": "Get Current Weather",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Current Weather": {
+      "main": [
+        [
+          {
+            "node": "Save Weather Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-01T00:00:00.000Z",
+  "versionId": "1"
+}
+
